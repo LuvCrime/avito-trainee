@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./Background-img/subtle_white_feathers.png);
+}
+
+.main-block {
+  display: flex;
+  border: 1px solid lightgray;
+  width: 1200px;
+  height: 600px;
+  flex-direction: row;
+}
+
+#preview {
+  width: 100%;
+  display: flex;
+}
+
+#preview {
+  border-left: 1px solid lightgray;
+  background-color: white;
+}
+
+.copyDiv {
+  max-height: none;
+  position: absolute;
+  top: 20000px; 
+  left:-10500px;
+  opacity: 0;
+} 
