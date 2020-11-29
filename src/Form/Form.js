@@ -2,18 +2,24 @@ import React from "react";
 import FormM from "./FormM.module.css";
 import * as html2canvas from "html2canvas";
 import { render } from "@testing-library/react";
-import PlainCssButton from '../Button/PlainCssButton';
+import PlainCssButton from "../Button/PlainCssButton";
 
 export class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.onChangeColor=this.onChangeColor.bind(this);
+    this.onChangeColor = this.onChangeColor.bind(this);
+    this.onChangeTextColor = this.onChangeTextColor.bind(this);
   }
   onChangeColor(e) {
     var color = e.target.value;
-    console.log(color);
     this.props.changeColor(color);
   }
+
+  onChangeTextColor(e) {
+    var color = e.target.value;
+    this.props.changeTextColor(color);
+  }
+
   render() {
     return (
       <div className={FormM.wrapper}>
@@ -39,6 +45,9 @@ export class Form extends React.Component {
             value={this.props.header}
             name="header"
           ></input>
+          {!this.props.headerFits && (
+            <div className={FormM.text}>Слишком длинный текст.</div>
+          )}
           <textarea
             className={FormM.inputForm}
             placeholder="Текст"
@@ -49,11 +58,29 @@ export class Form extends React.Component {
           {!this.props.textFits && (
             <div className={FormM.text}>Слишком длинный текст.</div>
           )}
-          <div className={FormM.chooseColor}>Выберите цвет заливки</div>
-          <input className={FormM.color} type="color" list="colorList" onChange = { this.onChangeColor }/>
+          <div className={FormM.colors}>
+            <div className={FormM.chooseColor}>
+              Выберите цвет <br></br>заливки
+            </div>
+            <input
+              className={FormM.color}
+              type="color"
+              list="colorList"
+              onChange={this.onChangeColor}
+            />
+            <div className={FormM.chooseColor}>
+              Выберите цвет <br></br>текста
+            </div>
+            <input
+              className={FormM.color}
+              type="color"
+              list="colorList"
+              onChange={this.onChangeTextColor}
+            />
+          </div>
         </form>
         <div className={FormM.buttons}>
-          <PlainCssButton 
+          <PlainCssButton
             type="button"
             id="png"
             onClick={this.props.handleEdit}
@@ -61,7 +88,7 @@ export class Form extends React.Component {
           >
             Save as PNG
           </PlainCssButton>
-          <PlainCssButton 
+          <PlainCssButton
             type="button"
             id="html"
             onClick={this.props.handleEdit}
@@ -69,7 +96,7 @@ export class Form extends React.Component {
           >
             Save as HTML
           </PlainCssButton>
-          <PlainCssButton 
+          <PlainCssButton
             type="button"
             id="json"
             onClick={this.props.handleEdit}

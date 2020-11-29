@@ -1,51 +1,46 @@
 .wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    background-size: cover;
-    background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-size: cover;
+  background-color: white;
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  color: white;
 }
 
 .header {
-    width: 350px;
-    height: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    font-size: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: black;
+  width: 350px;
+  max-height: 50px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
 }
 
 .description {
-    width: 200px;
-    width: 300px;
-    max-height: 50px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    text-decoration: none;
-    color: black;
+  width: 350px;
+  max-height: 50px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
 }
 
-.descriptionToCheck {
-    max-height: none;
-    position: absolute;
-    visibility: hidden;
+.descriptionToCheck,
+.headerToCheck {
+  max-height: none;
+  position: absolute;
+  visibility: hidden;
 }
 
 .linkWrapper {
-    width: 100%;
-    display: flex;
-    
+  width: 100%;
+  display: flex;
 }

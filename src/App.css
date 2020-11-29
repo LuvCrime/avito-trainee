@@ -67,7 +67,7 @@
 .copyDiv {
   max-height: none;
   position: absolute;
-  top: 20000px; 
-  left:-10500px;
+  top: 20000px;
+  left: -10500px;
   opacity: 0;
-} 
+}
