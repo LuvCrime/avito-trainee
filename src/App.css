@@ -38,7 +38,7 @@
 }
 
 .wrapper {
-  width: 100%;
+  min-width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 .main-block {
   display: flex;
   border: 1px solid lightgray;
-  width: 1200px;
+  min-width: 820px;
   height: 600px;
   flex-direction: row;
 }
