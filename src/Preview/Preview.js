@@ -9,6 +9,7 @@ export class Preview extends React.Component {
     this.png = React.createRef();
     this.header = React.createRef();
     this.headerToCheck = React.createRef();
+    this.getRef = this.getRef.bind(this);
   }
 
   componentDidMount() {
@@ -31,10 +32,6 @@ export class Preview extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(
-      this.header.current.offsetHeight,
-      this.headerToCheck.current.offsetHeight
-    );
     if (
       this.description.current.offsetHeight !==
       this.descriptionToCheck.current.offsetHeight
@@ -58,6 +55,7 @@ export class Preview extends React.Component {
   }
 
   render() {
+    console.log(this.png.current);
     return (
       <a
         href={this.props.url}

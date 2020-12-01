@@ -1,49 +1,44 @@
-import "./App.css";
-import React from "react";
-import { Form } from "./Form/Form";
-import { Preview } from "./Preview/Preview";
 import * as html2canvas from "html2canvas";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import autoBind from 'react-autobind';
+import React from "react";
+
+import { Form } from "./Form/Form";
+import { Preview } from "./Preview/Preview";
+
+import "./App.css";
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: "",
-      header: "Вакансия мечты",
-      description: "frontend-dev",
+      url: "https://www.avito.ru/moskva",
+      header: "Sample header",
+      description: "Sample text",
       buttonIndex: "",
-      imgUrl: "https://pngimg.com/uploads/free/free_PNG90756.png",
+      imgUrl: "https://bellard.org/bpg/2.png",
       textFits: true,
       headerFits: true,
       backgroundColor: "",
       color: "",
     };
 
-    this.onChange = this.onChange.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-    this.onTextLayoutChange = this.onTextLayoutChange.bind(this);
-    this.printDocument = this.printDocument.bind(this);
-    this.print = this.print.bind(this);
+ 
     this.preview = React.createRef();
-    this.saveAsPng = this.saveAsPng.bind(this);
-    this.saveAsHtml = this.saveAsHtml.bind(this);
-    this.changeColor = this.changeColor.bind(this);
-    this.saveAsJson = this.saveAsJson.bind(this);
-    this.onHeaderLayoutChange = this.onHeaderLayoutChange.bind(this);
-    this.changeTextColor = this.changeTextColor.bind(this);
+
+    autoBind(this);
   }
 
   changeTextColor(color) {
     this.setState({
-      color: color,
+      color,
     });
   }
 
-  changeColor(color) {
+  changeColor(backgroundColor) {
     this.setState({
-      backgroundColor: color,
+      backgroundColor,
     });
   }
 
@@ -54,6 +49,7 @@ class App extends React.Component {
     });
   }
 
+
   handleEdit(e) {
     e.preventDefault();
     this.setState({
@@ -62,9 +58,7 @@ class App extends React.Component {
   }
 
   onTextLayoutChange(textFits) {
-    if (this.state.textFits === textFits) {
-      return;
-    } else {
+    if (this.state.textFits !== textFits) {
       this.setState({
         textFits: textFits,
       });
@@ -72,9 +66,7 @@ class App extends React.Component {
   }
 
   onHeaderLayoutChange(headerFits) {
-    if (this.state.headerFits === headerFits) {
-      return;
-    } else {
+    if (this.state.headerFits !== headerFits) {
       this.setState({
         headerFits: headerFits,
       });
@@ -83,12 +75,12 @@ class App extends React.Component {
 
   printDocument(domElement) {
     html2canvas(domElement, { useCORS: true }).then((canvas) => {
-      this.saveAsPng(canvas.toDataURL(), "file-name.png");
+      this.saveAsPng(canvas.toDataURL(), "banner.png");
     });
   }
 
   saveAsPng(uri, filename) {
-    if (this.state.textFits === true && this.state.headerFits === true) {
+    if (this.state.textFits && this.state.headerFits) {
       var link = document.createElement("a");
       if (typeof link.download === "string") {
         link.href = uri;
@@ -103,7 +95,7 @@ class App extends React.Component {
       Swal.fire({
         position: "top",
         icon: "warning",
-        title: `Unable to save PNG (probably too long text)`,
+        title: `Unable to save PNG (too long text)`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -114,50 +106,56 @@ class App extends React.Component {
     this.printDocument(this.preview.current.getRef());
   }
 
-  saveAsHtml(text) {
-    var t = document.getElementById("preview");
-    text = t.innerHTML;
-    try {
-      if (this.state.textFits === true && this.state.headerFits === true) {
-        var htmlDiv = document.createElement("div");
-        htmlDiv.classList.add("copyDiv");
-        document.body.append(htmlDiv);
-        htmlDiv.innerText = text;
-        var range = document.createRange();
-        range.selectNodeContents(htmlDiv);
-        window.getSelection().addRange(range);
-        var successful = document.execCommand("copy");
-        var msg = successful ? "successfully" : "unsuccessfully";
-        document.body.removeChild(htmlDiv);
-        window.getSelection().removeAllRanges();
 
-        console.log("html");
 
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          title: `HTML coppied ${msg}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } else {
-        throw new TypeError("not equel");
+  copyText(text, type) {
+    var title;
+    var successful;
+
+    if (this.state.textFits && this.state.headerFits) {
+      var htmlDiv = document.createElement("div");
+      htmlDiv.classList.add("copyDiv");
+      document.body.append(htmlDiv);
+      htmlDiv.innerText = text;
+
+      window.getSelection().removeAllRanges();
+      var range = document.createRange();
+      range.selectNodeContents(htmlDiv);
+      window.getSelection().addRange(range);
+      console.log(text, htmlDiv);
+
+      try {
+        successful = document.execCommand("copy");
+      } catch (err) {
+        console.error(err);
+        successful = false;
       }
-    } catch (err) {
-      Swal.fire({
-        position: "top",
-        icon: "warning",
-        title: `Unable to copy HTML (probably too long text)`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      
+      if (!successful) {
+        console.error('failed to copy!');
+      }
+      
+      document.body.removeChild(htmlDiv);
+      window.getSelection().removeAllRanges();
+      
+      title = successful 
+        ? `${type} coppied successfully` 
+        : `${type} coppied unsuccessfully`;
+    } else {
+      successful = false;
+      title = "Too long text";
     }
+
+    Swal.fire({
+      position: "top",
+      icon: successful ? "success" : "warning",
+      title,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 
-  saveAsJson(text) {
-    var element = document.getElementById("preview");
-    var html = element.outerHTML;
-    try {
+  saveAsJson() {
       var data = {
         href: this.state.url,
         header: this.state.header,
@@ -165,46 +163,20 @@ class App extends React.Component {
         imgUrl: this.state.imgUrl,
         backgroundColor: this.state.backgroundColor,
       };
-      if (this.state.textFits === true && this.state.headerFits === true) {
-        var json = JSON.stringify(data);
-        var htmlDiv = document.createElement("div");
-        htmlDiv.classList.add("copyDiv");
-        document.body.append(htmlDiv);
-        htmlDiv.innerHTML = json;
-        var range = document.createRange();
-        range.selectNodeContents(htmlDiv);
-        window.getSelection().addRange(range);
-        var successful = document.execCommand("copy");
-        var msg = successful ? "successfully" : "unsuccessfully";
-        document.body.removeChild(htmlDiv);
-        window.getSelection().removeAllRanges();
-        console.log("json");
-
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          title: `JSON coppied ${msg}`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } else {
-        throw new TypeError("not equel");
-      }
-    } catch (err) {
-      Swal.fire({
-        position: "top",
-        icon: "warning",
-        title: `Unable to copy JSON (probably too long text)`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
+      var json = JSON.stringify(data);
+      this.copyText(json, 'JSON');
   }
+
+  saveAsHtml() {
+    var preview = document.getElementById("preview");
+    
+    this.copyText(preview.innerHTML, 'HTML');
+  }
+
   render() {
-    const MySwal = withReactContent(Swal);
     return (
-      <div class="wrapper">
-        <div class="main-block">
+      <div className="wrapper">
+        <div className="main-block">
           <Form
             value={this.state.header}
             onChange={this.onChange}

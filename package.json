@@ -10,10 +10,10 @@
     "clipboard-polyfill": "^3.0.1",
     "html2canvas": "^1.0.0-rc.7",
     "react": "^17.0.1",
+    "react-autobind": "^1.0.6",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.0",
     "sweetalert2": "^10.10.4",
-    "sweetalert2-react-content": "^3.2.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -39,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
   }
 }

@@ -1,15 +1,14 @@
 import React from "react";
+import autoBind from 'react-autobind';
 import FormM from "./FormM.module.css";
-import * as html2canvas from "html2canvas";
-import { render } from "@testing-library/react";
-import PlainCssButton from "../Button/PlainCssButton";
+import Button from "../Button/Button";
 
 export class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.onChangeColor = this.onChangeColor.bind(this);
-    this.onChangeTextColor = this.onChangeTextColor.bind(this);
+    autoBind(this);
   }
+  
   onChangeColor(e) {
     var color = e.target.value;
     this.props.changeColor(color);
@@ -80,30 +79,27 @@ export class Form extends React.Component {
           </div>
         </form>
         <div className={FormM.buttons}>
-          <PlainCssButton
+          <Button
             type="button"
             id="png"
-            onClick={this.props.handleEdit}
             onClick={this.props.print}
           >
             Save as PNG
-          </PlainCssButton>
-          <PlainCssButton
+          </Button>
+          <Button
             type="button"
             id="html"
-            onClick={this.props.handleEdit}
             onClick={this.props.saveAsHtml}
           >
             Save as HTML
-          </PlainCssButton>
-          <PlainCssButton
+          </Button>
+          <Button
             type="button"
             id="json"
-            onClick={this.props.handleEdit}
             onClick={this.props.saveAsJson}
           >
             Save as JSON
-          </PlainCssButton>
+          </Button>
         </div>
       </div>
     );
