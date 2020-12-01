@@ -1,13 +1,14 @@
 import * as html2canvas from "html2canvas";
 import Swal from "sweetalert2";
-import autoBind from 'react-autobind';
+import autoBind from "react-autobind";
 import React from "react";
 
 import { Form } from "./Form/Form";
 import { Preview } from "./Preview/Preview";
+import { Copyright } from "./Copyright/Copyright";
 
 import "./App.css";
-
+import { ThemeProvider } from "@material-ui/core";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,16 +16,18 @@ class App extends React.Component {
     this.state = {
       url: "https://www.avito.ru/moskva",
       header: "Sample header",
-      description: "Sample text",
+      description: "Sample text Sample text Sample text Sample text",
       buttonIndex: "",
-      imgUrl: "https://bellard.org/bpg/2.png",
+      imgUrl:
+        "https://lh3.googleusercontent.com/proxy/SNOeb7FFcJ1BEHRutnCWZC9Vwzmm0h5em1zBlRu8EOWbRFzfz85o4Fxra-vmKOmaDNo2EZe5clTG8Z4_N2JpmC4tc-0uWjb9ZQEJECpi68_cGu7TJgQhV76ZTeM0I-Sxq0_Gc1A",
+      base64Url: "",
+      imgError: false,
       textFits: true,
       headerFits: true,
       backgroundColor: "",
       color: "",
     };
 
- 
     this.preview = React.createRef();
 
     autoBind(this);
@@ -48,7 +51,6 @@ class App extends React.Component {
       [name]: e.target.value,
     });
   }
-
 
   handleEdit(e) {
     e.preventDefault();
@@ -106,7 +108,38 @@ class App extends React.Component {
     this.printDocument(this.preview.current.getRef());
   }
 
+  saveImgBase(e) {
+    this.setState({
+      imgError: false,
+    });
+    var canvas = document.createElement("canvas");
+    var ctx = canvas.getContext("2d");
 
+    var base_image = new Image();
+    base_image.crossOrigin = "anonymous";
+    base_image.src = e.target.value;
+    base_image.onload = () => {
+      canvas.width = base_image.width;
+      canvas.height = base_image.height;
+      ctx.drawImage(base_image, 0, 0);
+      document.body.append(canvas);
+      var pngUrl = canvas.toDataURL();
+      this.setState({
+        base64Url: pngUrl,
+      });
+    };
+
+    base_image.onerror = () => {
+      this.setState({
+        imgError: true,
+        base64Url: e.target.value,
+      });
+    };
+
+    this.setState({
+      imgUrl: e.target.value,
+    });
+  }
 
   copyText(text, type) {
     var title;
@@ -130,16 +163,16 @@ class App extends React.Component {
         console.error(err);
         successful = false;
       }
-      
+
       if (!successful) {
-        console.error('failed to copy!');
+        console.error("failed to copy!");
       }
-      
+
       document.body.removeChild(htmlDiv);
       window.getSelection().removeAllRanges();
-      
-      title = successful 
-        ? `${type} coppied successfully` 
+
+      title = successful
+        ? `${type} coppied successfully`
         : `${type} coppied unsuccessfully`;
     } else {
       successful = false;
@@ -156,21 +189,22 @@ class App extends React.Component {
   }
 
   saveAsJson() {
-      var data = {
-        href: this.state.url,
-        header: this.state.header,
-        description: this.state.description,
-        imgUrl: this.state.imgUrl,
-        backgroundColor: this.state.backgroundColor,
-      };
-      var json = JSON.stringify(data);
-      this.copyText(json, 'JSON');
+    var data = {
+      href: this.state.url,
+      header: this.state.header,
+      description: this.state.description,
+      imgUrl: this.state.imgUrl,
+      backgroundColor: this.state.backgroundColor,
+      color: this.state.color,
+    };
+    var json = JSON.stringify(data);
+    this.copyText(json, "JSON");
   }
 
   saveAsHtml() {
     var preview = document.getElementById("preview");
-    
-    this.copyText(preview.innerHTML, 'HTML');
+
+    this.copyText(preview.innerHTML, "HTML");
   }
 
   render() {
@@ -180,6 +214,7 @@ class App extends React.Component {
           <Form
             value={this.state.header}
             onChange={this.onChange}
+            saveImgBase={this.saveImgBase}
             handleEdit={this.handleEdit}
             buttonIndex={this.state.buttonIndex}
             header={this.state.header}
@@ -194,6 +229,7 @@ class App extends React.Component {
             changeColor={this.changeColor}
             changeTextColor={this.changeTextColor}
             saveAsJson={this.saveAsJson}
+            imgError={this.state.imgError}
           />
           <div id="preview">
             <Preview
@@ -201,7 +237,7 @@ class App extends React.Component {
               header={this.state.header}
               description={this.state.description}
               url={this.state.url}
-              imgUrl={this.state.imgUrl}
+              imgUrl={this.state.base64Url || this.state.imgUrl}
               onTextLayoutChange={this.onTextLayoutChange}
               onHeaderLayoutChange={this.onHeaderLayoutChange}
               printDocument={this.printDocument}
@@ -212,6 +248,7 @@ class App extends React.Component {
             />
           </div>
         </div>
+        <Copyright />
       </div>
     );
   }

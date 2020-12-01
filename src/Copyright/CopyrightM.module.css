@@ -1,0 +1,8 @@
+.copyright {
+  opacity: 0.5;
+  font-size: 10px;
+  padding-top: 40px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}

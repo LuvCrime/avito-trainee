@@ -1,13 +1,13 @@
 .button {
-    background-color: #6772e5;
-    padding: 12px 14px!important;
-    border: 1px solid lightgray!important;
-    border-radius: 0!important;
-    margin: 10px!important;
-  }
-  .button:hover {
-    background-color: #5469d4;
-  }
-  .button-label {
-    color: #fff;
-  }
+  background-color: #6772e5;
+  padding: 12px 14px !important;
+  border: 1px solid lightgray !important;
+  border-radius: 0 !important;
+  margin: 10px !important;
+}
+.button:hover {
+  background-color: #5469d4;
+}
+.button-label {
+  color: #fff;
+}
