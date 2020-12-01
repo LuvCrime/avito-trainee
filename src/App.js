@@ -19,7 +19,7 @@ class App extends React.Component {
       description: "Sample text Sample text Sample text Sample text",
       buttonIndex: "",
       imgUrl:
-        "https://lh3.googleusercontent.com/proxy/SNOeb7FFcJ1BEHRutnCWZC9Vwzmm0h5em1zBlRu8EOWbRFzfz85o4Fxra-vmKOmaDNo2EZe5clTG8Z4_N2JpmC4tc-0uWjb9ZQEJECpi68_cGu7TJgQhV76ZTeM0I-Sxq0_Gc1A",
+        "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png",
       base64Url: "",
       imgError: false,
       textFits: true,

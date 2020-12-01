@@ -77,3 +77,9 @@ textarea:hover {
   justify-content: space-between;
   align-items: center;
 }
+
+label {
+  color: grey;
+  font-size: 11px;
+  margin-bottom: -3px;
+}

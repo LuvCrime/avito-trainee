@@ -23,16 +23,17 @@ export class Form extends React.Component {
     return (
       <div className={FormM.wrapper}>
         <form className={FormM.inputBlock} autoComplete="off">
+        <label>Insert the link that leads to the banner</label>
           <input
             className={FormM.inputForm}
-            placeholder="Insert the link that leads to the banner"
             onChange={this.props.onChange}
-            value={this.props.url}
             name="url"
-          ></input>
+            value={this.props.url}
+            >
+          </input>
+          <label>Insert the link that leads to the picture or dataURI</label>
           <input
             className={FormM.inputForm}
-            placeholder="Insert the link that leads to the picture or dataURI"
             onChange={this.props.saveImgBase}
             value={this.props.imgUrl}
             name="imgUrl"
@@ -42,9 +43,9 @@ export class Form extends React.Component {
               This image'll be shown but won't be saved because of CORS.
             </div>
           )}
+          <label>Header</label>
           <input
             className={FormM.inputForm}
-            placeholder="Header"
             onChange={this.props.onChange}
             value={this.props.header}
             name="header"
@@ -52,9 +53,9 @@ export class Form extends React.Component {
           {!this.props.headerFits && (
             <div className={FormM.text}>Too long text</div>
           )}
+          <label>Text</label>
           <textarea
             className={FormM.inputForm}
-            placeholder="Text"
             onChange={this.props.onChange}
             value={this.props.description}
             name="description"
