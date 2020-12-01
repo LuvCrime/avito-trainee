@@ -38,7 +38,7 @@ export class Form extends React.Component {
             value={this.props.imgUrl}
             name="imgUrl"
           ></input>
-          {this.props.imgError && (
+          {this.props.imgError && this.props.imgUrl.trim() && (
             <div className={FormM.text}>
               This image'll be shown but won't be saved because of CORS.
             </div>
