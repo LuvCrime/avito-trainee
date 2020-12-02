@@ -86,13 +86,16 @@ export class Form extends React.Component {
         </form>
         <div className={FormM.buttons}>
           <Button type="button" id="png" onClick={this.props.print}>
-            Save as PNG
+            Save as <br></br>PNG
           </Button>
           <Button type="button" id="html" onClick={this.props.saveAsHtml}>
-            Save as HTML
+            Copy as <br></br>HTML
           </Button>
           <Button type="button" id="json" onClick={this.props.saveAsJson}>
-            Save as JSON
+            Copy as <br></br>JSON
+          </Button>
+          <Button type="button" id="json" onClick={this.props.clearForm}>
+            Clear <br></br>form
           </Button>
         </div>
       </div>

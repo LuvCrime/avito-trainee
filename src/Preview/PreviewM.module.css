@@ -22,6 +22,7 @@
   text-decoration: none;
   font-weight: bold;
   color: black;
+  white-space: break-spaces;
 }
 
 .description {
@@ -31,6 +32,7 @@
   font-size: 20px;
   text-decoration: none;
   color: black;
+  white-space: break-spaces;
 }
 
 .descriptionToCheck,
@@ -38,6 +40,7 @@
   max-height: none;
   position: absolute;
   visibility: hidden;
+  white-space: break-spaces;
 }
 
 .linkWrapper {
