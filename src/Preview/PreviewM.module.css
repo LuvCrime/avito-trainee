@@ -14,31 +14,41 @@
   color: white;
 }
 
-.header {
+.header,
+.headerToCheck  {
   width: 350px;
-  max-height: 50px;
   margin-bottom: 10px;
   font-size: 30px;
   text-decoration: none;
   font-weight: bold;
   color: black;
   white-space: break-spaces;
+  line-height: 26px;
 }
 
-.description {
+.description,
+.descriptionToCheck {
   width: 350px;
-  max-height: 50px;
   margin-bottom: 10px;
   font-size: 20px;
   text-decoration: none;
   color: black;
   white-space: break-spaces;
+  line-height: 23px;
+}
+
+.header {
+  max-height: 50px;
+}
+
+.description {
+  max-height: 65px;
 }
 
 .descriptionToCheck,
 .headerToCheck {
   max-height: none;
-  position: absolute;
+  position: absolute; 
   visibility: hidden;
   white-space: break-spaces;
 }

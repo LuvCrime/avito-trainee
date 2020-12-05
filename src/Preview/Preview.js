@@ -13,25 +13,14 @@ export class Preview extends React.Component {
   }
 
   componentDidMount() {
-    if (
-      this.description.current.offsetHeight !==
-      this.descriptionToCheck.current.offsetHeight
-    ) {
-      this.props.onTextLayoutChange(false);
-    } else {
-      this.props.onTextLayoutChange(true);
-    }
-    if (
-      this.header.current.offsetHeight !==
-      this.headerToCheck.current.offsetHeight
-    ) {
-      this.props.onHeaderLayoutChange(false);
-    } else {
-      this.props.onHeaderLayoutChange(true);
-    }
+    this.checkOffsetHeight();
   }
 
   componentDidUpdate() {
+    this.checkOffsetHeight();
+  }
+
+  checkOffsetHeight() {
     if (
       this.description.current.offsetHeight !==
       this.descriptionToCheck.current.offsetHeight

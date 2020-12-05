@@ -8,7 +8,6 @@ import { Preview } from "./Preview/Preview";
 import { Copyright } from "./Copyright/Copyright";
 
 import "./App.css";
-import { ThemeProvider } from "@material-ui/core";
 
 class App extends React.Component {
   constructor(props) {
@@ -92,8 +91,7 @@ class App extends React.Component {
           color: ""
         })
       }
-    })
-    
+    }) 
   }
 
   onHeaderLayoutChange(headerFits) {
