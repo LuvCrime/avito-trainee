@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/avito-trainee/build/static/css/main.ed4744e3.chunk.css",
-    "main.js": "/avito-trainee/build/static/js/main.2751333e.chunk.js",
-    "main.js.map": "/avito-trainee/build/static/js/main.2751333e.chunk.js.map",
+    "main.js": "/avito-trainee/build/static/js/main.d9d587aa.chunk.js",
+    "main.js.map": "/avito-trainee/build/static/js/main.d9d587aa.chunk.js.map",
     "runtime-main.js": "/avito-trainee/build/static/js/runtime-main.3d83ea4b.js",
     "runtime-main.js.map": "/avito-trainee/build/static/js/runtime-main.3d83ea4b.js.map",
     "static/js/2.a68b98e8.chunk.js": "/avito-trainee/build/static/js/2.a68b98e8.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.3d83ea4b.js",
     "static/js/2.a68b98e8.chunk.js",
     "static/css/main.ed4744e3.chunk.css",
-    "static/js/main.2751333e.chunk.js"
+    "static/js/main.d9d587aa.chunk.js"
   ]
 }
