@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/avito-trainee/build/static/css/main.ed4744e3.chunk.css",
-    "main.js": "/avito-trainee/build/static/js/main.d9d587aa.chunk.js",
-    "main.js.map": "/avito-trainee/build/static/js/main.d9d587aa.chunk.js.map",
-    "runtime-main.js": "/avito-trainee/build/static/js/runtime-main.3d83ea4b.js",
-    "runtime-main.js.map": "/avito-trainee/build/static/js/runtime-main.3d83ea4b.js.map",
-    "static/js/2.a68b98e8.chunk.js": "/avito-trainee/build/static/js/2.a68b98e8.chunk.js",
-    "static/js/2.a68b98e8.chunk.js.map": "/avito-trainee/build/static/js/2.a68b98e8.chunk.js.map",
-    "static/js/3.bf6a7ea6.chunk.js": "/avito-trainee/build/static/js/3.bf6a7ea6.chunk.js",
-    "static/js/3.bf6a7ea6.chunk.js.map": "/avito-trainee/build/static/js/3.bf6a7ea6.chunk.js.map",
+    "main.css": "/avito-trainee/build/static/css/main.8b20628a.chunk.css",
+    "main.js": "/avito-trainee/build/static/js/main.e4046748.chunk.js",
+    "main.js.map": "/avito-trainee/build/static/js/main.e4046748.chunk.js.map",
+    "runtime-main.js": "/avito-trainee/build/static/js/runtime-main.da2ffd21.js",
+    "runtime-main.js.map": "/avito-trainee/build/static/js/runtime-main.da2ffd21.js.map",
+    "static/js/2.37184366.chunk.js": "/avito-trainee/build/static/js/2.37184366.chunk.js",
+    "static/js/2.37184366.chunk.js.map": "/avito-trainee/build/static/js/2.37184366.chunk.js.map",
+    "static/js/3.759657ec.chunk.js": "/avito-trainee/build/static/js/3.759657ec.chunk.js",
+    "static/js/3.759657ec.chunk.js.map": "/avito-trainee/build/static/js/3.759657ec.chunk.js.map",
     "index.html": "/avito-trainee/build/index.html",
-    "static/css/main.ed4744e3.chunk.css.map": "/avito-trainee/build/static/css/main.ed4744e3.chunk.css.map",
-    "static/js/2.a68b98e8.chunk.js.LICENSE.txt": "/avito-trainee/build/static/js/2.a68b98e8.chunk.js.LICENSE.txt",
+    "static/css/main.8b20628a.chunk.css.map": "/avito-trainee/build/static/css/main.8b20628a.chunk.css.map",
+    "static/js/2.37184366.chunk.js.LICENSE.txt": "/avito-trainee/build/static/js/2.37184366.chunk.js.LICENSE.txt",
     "static/media/App.css": "/avito-trainee/build/static/media/subtle_white_feathers.1944426b.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.3d83ea4b.js",
-    "static/js/2.a68b98e8.chunk.js",
-    "static/css/main.ed4744e3.chunk.css",
-    "static/js/main.d9d587aa.chunk.js"
+    "static/js/runtime-main.da2ffd21.js",
+    "static/js/2.37184366.chunk.js",
+    "static/css/main.8b20628a.chunk.css",
+    "static/js/main.e4046748.chunk.js"
   ]
 }

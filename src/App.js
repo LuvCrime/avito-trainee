@@ -68,30 +68,26 @@ class App extends React.Component {
 
   clearForm() {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, clear form!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, clear form!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Cleared!',
-          'Your form has been cleared.',
-          'success'
-        )
+        Swal.fire("Cleared!", "Your form has been cleared.", "success");
         this.setState({
           url: "",
           imgUrl: "",
           header: "",
           description: "",
           backgroundColor: "",
-          color: ""
-        })
+          color: "",
+        });
       }
-    }) 
+    });
   }
 
   onHeaderLayoutChange(headerFits) {

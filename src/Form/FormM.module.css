@@ -27,11 +27,7 @@
   white-space: normal;
   text-decoration: none;
   border: 1px solid lightgray;
-}
-
-* {
   outline: none;
-  text-decoration: none;
 }
 
 .text {
