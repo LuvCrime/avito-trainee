@@ -1,3 +1,11 @@
+.wrapper,
+#root,
+body,
+html {
+  min-width: fit-content;
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -15,7 +23,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,18 +47,18 @@
 
 .wrapper {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url(./Background-img/subtle_white_feathers.png);
+  background-repeat: repeat;
   flex-direction: column;
 }
 
 .main-block {
   display: flex;
   border: 1px solid lightgray;
-  min-width: 1200px;
+  width: 1200px;
   height: 600px;
   flex-direction: row;
 }
@@ -71,4 +79,8 @@
   top: 20000px;
   left: -10500px;
   opacity: 0;
+}
+
+body.swal2-height-auto {
+  height: 100% !important;
 }

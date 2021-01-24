@@ -21,8 +21,10 @@
 
 .inputForm {
   margin: 10px;
-  width: 300px;
+  width: 299.9px;
+  max-width: 300px;
   height: 40px;
+  max-height: 40px;
   text-overflow: clip;
   white-space: normal;
   text-decoration: none;

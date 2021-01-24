@@ -1,7 +1,9 @@
 import React from "react";
-import PreviewM from "./PreviewM.module.css";
+import { connect } from "react-redux";
+import autoBind from "auto-bind";
+import { classes, inlineCss } from "./Styles";
 
-export class Preview extends React.Component {
+class Preview extends React.Component {
   constructor(props) {
     super(props);
     this.description = React.createRef();
@@ -9,7 +11,8 @@ export class Preview extends React.Component {
     this.png = React.createRef();
     this.header = React.createRef();
     this.headerToCheck = React.createRef();
-    this.getRef = this.getRef.bind(this);
+
+    autoBind(this);
   }
 
   componentDidMount() {
@@ -44,51 +47,50 @@ export class Preview extends React.Component {
   }
 
   render() {
-    console.log(this.png.current);
     return (
       <a
         href={this.props.url}
         target="_blank"
-        className={PreviewM.linkWrapper}
+        className={classes.linkWrapper}
         id="linkBanner"
       >
         <div
-          className={PreviewM.wrapper}
+          className={classes.wrapper}
           id="img"
           style={{
             backgroundImage: `url(${this.props.imgUrl})`,
-            backgroundColor: this.props.backgroundColor,
+            backgroundColor: this.props.bgColor,
           }}
           ref={this.png}
         >
-          <div className={PreviewM.text}>
+          <div className={classes.text}>
             <div
-              className={PreviewM.header}
+              className={classes.header}
               ref={this.header}
               style={{
-                color: this.props.color,
+                color: this.props.textColor,
               }}
             >
               {this.props.header}
             </div>
             <div
-              className={`${PreviewM.header} ${PreviewM.headerToCheck}`}
+              className={`${classes.header} ${classes.headerToCheck}`}
               ref={this.headerToCheck}
             >
               {this.props.header}
             </div>
             <div
-              className={PreviewM.description}
+              className={classes.description}
               value={this.props.description}
               ref={this.description}
               style={{
-                color: this.props.color,
+                color: this.props.textColor,
               }}
             >
               {this.props.description}
             </div>
             <div
-              className={`${PreviewM.description} ${PreviewM.descriptionToCheck}`}
+              className={`${classes.description} ${classes.descriptionToCheck}`}
               ref={this.descriptionToCheck}
             >
               {this.props.description}
@@ -99,3 +101,23 @@ export class Preview extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    textColor: state.textColor,
+    bgColor: state.bgColor,
+    description: state.description,
+    header: state.header,
+    url: state.url,
+    imgUrl: state.base64Url || state.imgUrl,
+    imgError: false,
+  };
+};
+
+const Connected = connect(mapStateToProps, null, null, { forwardRef: true })(
+  Preview
+);
+
+export default React.forwardRef((props, ref) => {
+  return <Connected {...props} ref={ref} />;
+});
