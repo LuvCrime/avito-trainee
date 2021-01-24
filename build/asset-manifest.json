@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/avito-trainee/build/static/css/main.9ad19cf5.chunk.css",
+    "main.css": "/avito-trainee/build/static/css/main.3aca1dff.chunk.css",
     "main.js": "/avito-trainee/build/static/js/main.9b352719.chunk.js",
     "main.js.map": "/avito-trainee/build/static/js/main.9b352719.chunk.js.map",
     "runtime-main.js": "/avito-trainee/build/static/js/runtime-main.445aab14.js",
@@ -10,14 +10,14 @@
     "static/js/3.fcaa1537.chunk.js": "/avito-trainee/build/static/js/3.fcaa1537.chunk.js",
     "static/js/3.fcaa1537.chunk.js.map": "/avito-trainee/build/static/js/3.fcaa1537.chunk.js.map",
     "index.html": "/avito-trainee/build/index.html",
-    "static/css/main.9ad19cf5.chunk.css.map": "/avito-trainee/build/static/css/main.9ad19cf5.chunk.css.map",
+    "static/css/main.3aca1dff.chunk.css.map": "/avito-trainee/build/static/css/main.3aca1dff.chunk.css.map",
     "static/js/2.ae942493.chunk.js.LICENSE.txt": "/avito-trainee/build/static/js/2.ae942493.chunk.js.LICENSE.txt",
     "static/media/App.css": "/avito-trainee/build/static/media/subtle_white_feathers.1944426b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.445aab14.js",
     "static/js/2.ae942493.chunk.js",
-    "static/css/main.9ad19cf5.chunk.css",
+    "static/css/main.3aca1dff.chunk.css",
     "static/js/main.9b352719.chunk.js"
   ]
 }
